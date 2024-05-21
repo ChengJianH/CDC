@@ -1,0 +1,58 @@
+
+project: "cdc"
+name: "stl-s100-c150-lr0001-bs1000-su500"
+method: "cdcv2"
+method_kwargs:
+  per_class_selected_num: 100
+  super_cluster_num: 150
+  w_en: 1.0
+pretext:
+  enable: True
+  dir: ./trained_models/mocov2plus/f66tydvt
+  ckpt: mocov2plus-stl10-all-f66tydvt-ep=999.ckpt
+backbone:
+  name: "resnet34"
+  nheads: 1
+  nclusters: 10
+  feat_dim: 512
+data:
+  dataset: stl10
+  train_path: "../../datasets"
+  val_path: "../../datasets"
+  num_workers: 8
+  split: 'train+test'
+optimizer:
+  name: "adam"
+  batch_size: 1000
+  sub_batch_size: 500
+  lr: 0.0001
+  kwargs:
+    weight_decay: 0.000
+scheduler:
+  name: constant
+max_epochs: 100
+cluster_eval:
+  plot_freq: 10
+  plot_title: 'CDC'
+  eval_freq: 1
+augmentation_strong:
+  crop_size: 96
+  normalize:
+    mean: [0.4914, 0.4823, 0.4466]
+    std: [0.247, 0.243, 0.261]
+  num_strong_augs: 4
+  cutout_kwargs:
+    n_holes: 1
+    length: 32
+    random: True
+augmentation_stantard:
+  random_resized_crop:
+    size: 96
+  normalize:
+    mean: [0.4914, 0.4823, 0.4466]
+    std: [0.247, 0.243, 0.261]
+augmentation_val:
+  crop_size: 96
+  normalize:
+    mean: [0.4914, 0.4823, 0.4466]
+    std: [0.247, 0.243, 0.261]

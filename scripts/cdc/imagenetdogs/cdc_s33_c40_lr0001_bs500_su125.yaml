@@ -1,0 +1,59 @@
+
+project: "cdc"
+name: "imagenetdogs-s33-c40-lr0001-bs500-su125"
+method: "cdcv2"
+method_kwargs:
+  per_class_selected_num: 33
+  super_cluster_num: 40
+  w_en: 1.0
+pretext:
+  enable: True
+  dir: ./trained_models/mocov2plus/js77a3b3
+  ckpt: mocov2plus-imagenetdogs-2-js77a3b3-ep=999.ckpt
+backbone:
+  name: "resnet34"
+  nheads: 1
+  nclusters: 15
+  feat_dim: 512
+data:
+  dataset: imagenetdogs
+  train_path: "../../datasets/imagenetdogs"
+  val_path: "../../datasets/imagenetdogs"
+  num_workers: 8
+  split: 'train+test'
+optimizer:
+  name: "adam"
+  batch_size: 500
+  sub_batch_size: 125
+  lr: 0.0001
+  kwargs:
+    weight_decay: 0.000
+scheduler:
+  name: constant
+max_epochs: 100
+cluster_eval:
+  plot_freq: 10
+  plot_title: 'CDC'
+  eval_freq: 1
+augmentation_strong:
+  crop_size: 224
+  normalize:
+    mean: [0.485, 0.456, 0.406]
+    std: [0.229, 0.224, 0.225]
+  num_strong_augs: 4
+  cutout_kwargs:
+    n_holes: 1
+    length: 32
+    random: True
+augmentation_stantard:
+  random_resized_crop:
+    size: 224
+  normalize:
+    mean: [0.485, 0.456, 0.406]
+    std: [0.229, 0.224, 0.225]
+augmentation_val:
+  crop_size: 224
+  normalize:
+    mean: [0.485, 0.456, 0.406]
+    std: [0.229, 0.224, 0.225]
+

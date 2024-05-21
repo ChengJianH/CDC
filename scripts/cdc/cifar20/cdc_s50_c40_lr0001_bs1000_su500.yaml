@@ -1,0 +1,60 @@
+
+project: "cdc"
+name: "cifar20-s50-c40-lr0001-bs1000-su500"
+method: "cdcv2"
+method_kwargs:
+  per_class_selected_num: 50
+  super_cluster_num: 40
+  w_en: 1.0
+pretext:
+  enable: True
+  dir: ./trained_models/mocov2plus/k1m25ecy
+  ckpt: mocov2plus-cifar20-all-k1m25ecy-ep=999.ckpt
+backbone:
+  name: "resnet34"
+  nheads: 1
+  nclusters: 20
+  feat_dim: 512
+data:
+  dataset: cifar20
+  train_path: "../../datasets"
+  val_path: "../../datasets"
+  num_workers: 8
+  split: 'train+test'
+optimizer:
+  name: "adam"
+  batch_size: 1000
+  sub_batch_size: 500
+  lr: 0.0001
+  elr: 0.00001
+  kwargs:
+    weight_decay: 0.000
+scheduler:
+  name: constant
+max_epochs: 100
+
+cluster_eval:
+  plot_freq: 10
+  plot_title: 'CDC'
+  eval_freq: 1
+augmentation_strong:
+  crop_size: 32
+  normalize:
+    mean: [0.5071, 0.4865, 0.4409]
+    std: [0.2673, 0.2564, 0.2762]
+  num_strong_augs: 4
+  cutout_kwargs:
+    n_holes: 1
+    length: 16
+    random: True
+augmentation_stantard:
+  random_resized_crop:
+    size: 32
+  normalize:
+    mean: [0.5071, 0.4865, 0.4409]
+    std: [0.2673, 0.2564, 0.2762]
+augmentation_val:
+  crop_size: 32
+  normalize:
+    mean: [0.5071, 0.4865, 0.4409]
+    std: [0.2673, 0.2564, 0.2762]
