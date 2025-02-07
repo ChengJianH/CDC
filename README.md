@@ -1,3 +1,4 @@
+This is official code for ICLR25 paper "Towards Calibrated Deep Clustering Network".
 
 ## Requirements
 * torch
@@ -48,6 +49,19 @@ python main_cdc.py \
 ## Model Zoo
 [Pretrained Model and Trained Model](https://seunic-my.sharepoint.cn/personal/220222092_seu_edu_cn/_layouts/15/onedrive.aspx)
 
+## Citation
+If you find this project useful for your research, please consider citing our paper:
+
+```latex
+@inproceedings{cdc2025,
+  title={Towards Calibrated Deep Clustering Network},
+  author={Jia, Yuheng and Cheng, Jianhong and Liu, Hui and Hou, Junhui},
+  booktitle={The Thirteenth International Conference on Learning Representations},
+  year={2025}
+}
+```
+For any questions, please add issues or contact the main authors.
+
 ## Acknowledgment
 
 [solo-learn](https://github.com/vturrisi/solo-learn)
@@ -55,3 +69,5 @@ python main_cdc.py \
 [SCAN](https://github.com/wvangansbeke/Unsupervised-Classification)
 
 [SPICE](https://github.com/niuchuangnn/SPICE)
+
+
