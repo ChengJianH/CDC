@@ -76,7 +76,7 @@ def main():
         checkpoint = torch.load(cfg['cdc_checkpoint'], map_location='cpu')
         model.load_state_dict(checkpoint['model'])
         cali_mlp.load_state_dict(checkpoint['cali_mlp'])
-        optimizer_all.load_state_dict(checkpoint['optimizer_clu'])
+        optimizer_clu.load_state_dict(checkpoint['optimizer_clu'])
         optimizer_cali.load_state_dict(checkpoint['optimizer_cali'])
         start_epoch = checkpoint['epoch']
     else:
@@ -116,7 +116,7 @@ def main():
             print('CDC-Cal ', clustering_stats)
         # Checkpoint
         print('Checkpoint ...')
-        torch.save({'optimizer_clu': optimizer_all.state_dict(),
+        torch.save({'optimizer_clu': optimizer_clu.state_dict(),
                     'optimizer_cali': optimizer_cali.state_dict(),
                     'model': model.state_dict(),
                     'cali_mlp': cali_mlp.state_dict(),
