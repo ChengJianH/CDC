@@ -44,7 +44,7 @@ python main_cdc.py \
     --config_exp scripts/cdc/cifar10/cdc_s100_c500_lr0001_bs1000_su500.yaml
 ```
 
-**Note**: GPU memory of all the experiments are limited in 10GB.
+
 
 ## Model Zoo
 [Pretrained Model and Trained Model](https://seunic-my.sharepoint.cn/:f:/g/personal/220222092_seu_edu_cn/EvPQ5Lq6q5pDgoBQOW1Sr-cBNYwh7Ez89QB8tf_XdrcJnw?e=BQ8g06)
