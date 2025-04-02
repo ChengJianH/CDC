@@ -1,5 +1,7 @@
 This is official code for ICLR25 paper "Towards Calibrated Deep Clustering Network".
 
+[Paper](https://openreview.net/forum?id=JvH4jDDcG3)
+
 ## Requirements
 * torch
 * torchvision
@@ -15,16 +17,20 @@ This is official code for ICLR25 paper "Towards Calibrated Deep Clustering Netwo
 * munkres
 * easydict
 
-**Optional**:
 * nvidia-dali
 * matplotlib
 * seaborn
 * pandas
 * umap-learn
+* h5py
+* scikit-learn
+* hydra-core
+
+**Conda Pack is available at [Conda Pack](https://drive.google.com/file/d/1EkQKSSflM908WvF5KkaoTCkzEcptrJdD/view?usp=sharing)** with Python 3.7.4, CUDA 11.7, torch 1.13.0 and torchvision 0.14.0.
 
 ## Training
 ### A. Pretrain
-This part is cloned from solo-learn (a library of self-supervised methods). For pretraining the backbone, follow one of the many bash files in `scripts/pretrain/`.
+This part is cloned from [solo-learn](https://github.com/vturrisi/solo-learn) (a library of self-supervised methods). For pretraining the backbone, follow one of the many script files in `scripts/pretrain/`.
 
 ```bash
 python main_pretrain.py \
@@ -34,7 +40,7 @@ python main_pretrain.py \
     --config-name mocov2plus.yaml
 ```
 ### B. CDC Training
-Follow one of the many bash files in `scripts/cdc/` to run CDC method.
+Follow one of the many script files in `scripts/cdc/` to run CDC method.
 
 ```bash
 python main_cdc.py \
@@ -47,7 +53,7 @@ python main_cdc.py \
 
 
 ## Model Zoo
-[Pretrained Model and Trained Model](https://seunic-my.sharepoint.cn/:f:/g/personal/220222092_seu_edu_cn/EvPQ5Lq6q5pDgoBQOW1Sr-cBNYwh7Ez89QB8tf_XdrcJnw?e=BQ8g06)
+[Pretrained Model(MoCo v2) and Trained Model (CDC)](https://seunic-my.sharepoint.cn/:f:/g/personal/220222092_seu_edu_cn/EvPQ5Lq6q5pDgoBQOW1Sr-cBNYwh7Ez89QB8tf_XdrcJnw?e=BQ8g06)
 
 ## Citation
 If you find this project useful for your research, please consider citing our paper:
