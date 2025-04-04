@@ -746,12 +746,12 @@ class BaseMomentumMethod(BaseMethod):
             usps = cfg.data.dataset in ["usps"]
             if cifar:
                 self.momentum_backbone.conv1 = nn.Conv2d(
-                    3, 64, kernel_size=3, stride=1, padding=2, bias=False
+                    3, 64, kernel_size=3, stride=1, padding=1, bias=False
                 )
                 self.momentum_backbone.maxpool = nn.Identity()
             if usps:
                 self.momentum_backbone.conv1 = nn.Conv2d(
-                    1, 64, kernel_size=3, stride=1, padding=2, bias=False
+                    1, 64, kernel_size=3, stride=1, padding=1, bias=False
                 )
                 self.momentum_backbone.maxpool = nn.Identity()
         initialize_momentum_params(self.backbone, self.momentum_backbone)
