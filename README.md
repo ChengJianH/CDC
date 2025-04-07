@@ -26,7 +26,7 @@ This is official code for ICLR25 paper "Towards Calibrated Deep Clustering Netwo
 * scikit-learn
 * hydra-core
 
-**Conda Pack is available at [Conda Pack](https://drive.google.com/file/d/1a0ERWuDyR62BSKkZwk5F-R82JZq1ooX1/view)** with Python 3.7.4, CUDA 11.7, torch 1.13.0 and torchvision 0.14.0.
+**Conda Pack is available at [Conda Pack](https://drive.google.com/file/d/1a0ERWuDyR62BSKkZwk5F-R82JZq1ooX1/view)** with Linux Ubuntu 20.04, Python 3.7.4, CUDA 11.7, torch 1.13.0 and torchvision 0.14.0.
 
 ## Training
 ### A. Pretrain
